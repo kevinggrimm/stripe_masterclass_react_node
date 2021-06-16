@@ -5,12 +5,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ProductsContextProvider from './context/ProductsContext';
+import CartContextProvider from './context/CartContext';
 
 // Strict mode calls action created twice
 ReactDOM.render(
   <Router>
     <ProductsContextProvider>
-      <App />
+      <CartContextProvider>
+        <App />
+      </CartContextProvider>
     </ProductsContextProvider>
   </Router>,
   document.getElementById('root')

@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
 import Shop from './components/pages/shop/Shop';
 import SingleProduct from './components/single-product/SingleProduct';
+import CartPage from './components/pages/cart-page/CartPage';
 import './App.scss';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/shop' component={Shop} />
         {/* Assign to "id" variable in match */}
         <Route path='/product/:id' component={SingleProduct} />
+        <Route path='/cart' component={CartPage} />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>
