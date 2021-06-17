@@ -1,0 +1,15 @@
+{
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {
+          "name": "T-shirt"
+        },
+        "unit_amount": 2000
+      },
+      "quantity": 1
+    }
+  ],
+  "customer_email": "kg@gmail.com"
+}

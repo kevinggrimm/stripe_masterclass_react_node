@@ -7,12 +7,22 @@ import reportWebVitals from './reportWebVitals';
 import ProductsContextProvider from './context/ProductsContext';
 import CartContextProvider from './context/CartContext';
 
+// Import Stripe dependencies
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js';
+
+// Instantiate Stripe promise; call loadStripe function, passing Stripe PK
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+
+
 // Strict mode calls action created twice
 ReactDOM.render(
   <Router>
     <ProductsContextProvider>
       <CartContextProvider>
-        <App />
+        <Elements stripe={stripePromise}>
+          <App />
+        </Elements>
       </CartContextProvider>
     </ProductsContextProvider>
   </Router>,

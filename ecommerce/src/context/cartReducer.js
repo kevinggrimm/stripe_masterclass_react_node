@@ -1,7 +1,14 @@
 import { ProductsContext } from "./ProductsContext";
 
+const storeCartItems = (cartItems) => {
+    const cart = cartItems.length > 0 ? cartItems : [];
+    // Store cart items in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
 // Helper function
 export const sumItems = cartItems => {
+    storeCartItems(cartItems);
     return {
         // reduce() - Iterate over each item and add quantity
         // Aggregates quantity attributes for all products within cart
@@ -75,6 +82,8 @@ const cartReducer = (state, action) => {
         
         // Clear the cart
         case 'CLEAR':
+            // Clear from local storage
+            localStorage.removeItem('cart');
             return {
                 cartItems: [],
                 itemCount: 0,
