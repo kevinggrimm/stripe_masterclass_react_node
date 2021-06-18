@@ -20,6 +20,7 @@ ReactDOM.render(
   <Router>
     <ProductsContextProvider>
       <CartContextProvider>
+        {/* useStripe allows us to use the Stripe API in our app */}
         <Elements stripe={stripePromise}>
           <App />
         </Elements>

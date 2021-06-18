@@ -1,0 +1,41 @@
+{
+  id: 'cs_test_a1q6uARvOjAyEB4hYX9I0Ar3fFLmgOz5BmhS1nxMoOgLycQxGWhk5qufXB',
+  object: 'checkout.session',
+  allow_promotion_codes: null,
+  amount_subtotal: 8400,
+  amount_total: 8400,
+  automatic_tax: { enabled: false, status: null },
+  billing_address_collection: null,
+  cancel_url: 'http://localhost:3000/canceled',
+  client_reference_id: null,
+  currency: 'usd',
+  customer: 'cus_JgsYSD0zCgUF9G',
+  customer_details: { email: 'kg@gmail.com', tax_exempt: 'none', tax_ids: [] },
+  customer_email: 'kg@gmail.com',
+  livemode: false,
+  locale: null,
+  metadata: {},
+  mode: 'payment',
+  payment_intent: 'pi_1J3UnMBIw7vu8az9F0DDni2s',
+  payment_method_options: {},
+  payment_method_types: [ 'card' ],
+  payment_status: 'paid',
+  setup_intent: null,
+  shipping: {
+    address: {
+      city: 'Manhasset',
+      country: 'US',
+      line1: '166 Webster Avenue',
+      line2: null,
+      postal_code: '11030',
+      state: 'NY'
+    },
+    name: 'Kevin Grimm'
+  },
+  shipping_address_collection: { allowed_countries: [ 'GB', 'US' ] },
+  submit_type: null,
+  subscription: null,
+  success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
+  total_details: { amount_discount: 0, amount_shipping: 0, amount_tax: 0 },
+  url: null
+}
