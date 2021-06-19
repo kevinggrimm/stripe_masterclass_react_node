@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ProductsContextProvider from './context/ProductsContext';
 import CartContextProvider from './context/CartContext';
-
+import UserContextProvider from './context/user-context';
 // Import Stripe dependencies
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
@@ -22,7 +22,10 @@ ReactDOM.render(
       <CartContextProvider>
         {/* useStripe allows us to use the Stripe API in our app */}
         <Elements stripe={stripePromise}>
-          <App />
+          {/* Wrap application with usercontextprovider */}
+          <UserContextProvider>
+            <App />
+          </UserContextProvider>
         </Elements>
       </CartContextProvider>
     </ProductsContextProvider>

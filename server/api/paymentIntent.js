@@ -33,7 +33,7 @@ async function paymentIntent(req, res) {
        // Stripe API returns a payment intend object
        // Client secret is needed to complete the payment process
        // Similar concept to the session Id for the hosted checkout
-       res.status(200).json({ clientSecret: paymentIntend.clientSecret });
+       res.status(200).json({ clientSecret: paymentIntent.client_secret });
    } catch (error) {
        console.log(error);
        res.status(400).json({ error: 'an error occurred, unable to create payment intent' });

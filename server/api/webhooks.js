@@ -1,5 +1,29 @@
 const stripeAPI = require('../stripe');
 
+// Object to handle webhook types
+const webHookHandlers = {
+    'checkout.session.completed': (data) => {
+        console.log('Checkout completed successfully ', data);
+        // Other business logic
+            // Write to DB
+            // email user
+            // Connect to 3rd party fulfillment service
+    },
+
+    'payment_intent.created': (data) => {
+        console.log('Payment intent created ', data);
+    },
+    
+    'payment_intent.succeeded': (data) => {
+        console.log('Payment succeeded ', data);
+    },
+
+    'payment_intent.failed': (data) => {
+        console.log('Payment failed ', data);
+    }
+}
+
+
 function webhook(req, res) {
     // Pull stripe signature from req.headers
     // Docs - https://stripe.com/docs/webhooks/signatures
@@ -20,10 +44,15 @@ function webhook(req, res) {
         return res.status(400).send(`Webhook error ${error.message}`);
     }
 
-    // If event did come from Stripe, listen for checkout.Session.completion event
-    if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
-        console.log('Event data: ', session);
+    /*
+        TIP - you dont want to listen to all of the events that Stripe sends
+        - Puts extra load on your server 
+        - Will be using Lambda though still, non priority logic + features
+
+        Executing the function associated with the event type
+    */
+    if (webHookHandlers[event.type]) {
+        webHookHandlers[event.type](event.data.object);
     }
 }
 

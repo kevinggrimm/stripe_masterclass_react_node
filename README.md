@@ -1,6 +1,8 @@
 # Resources
-- **Postman:** https://web.postman.co/workspace/New-Personal-Workspace~053bc16e-962e-4529-a973-e9d80f385c69/request/create?requestId=b2d20c61-b8b1-407e-ae0d-d231b303c5f3
-- **Stripe Docs**
+1. **Postman:** https://web.postman.co/workspace/New-Personal-Workspace~053bc16e-962e-4529-a973-e9d80f385c69/request/create?requestId=b2d20c61-b8b1-407e-ae0d-d231b303c5f3
+2. **Stripe Docs**
+https://stripe.com/docs/stripe-js/react
+
 
 ## Test Checkout Session Endpoint
 - `localhost:8080/create-checkout-session`
@@ -95,9 +97,35 @@
 }
 ```
 
+## 69 - Shipping Address Component
+`import { Formik } from 'formik';`
+1. Components for:
+- Shipping address
+- Custom checkout
+
+## 71 - Building Custom Checkout Component
+- React Stripe Docs - https://stripe.com/docs/stripe-js/react
+
+
+# Section 6 - Setup Authentication
+## Overview
+- Customers sign into app and checkout as guests
+- In most cases, need to be authenticated and have an account
+- Need to be authenticated to save the payment details
+- **Payment details are stored on Stripe and retrieved via API**
+
+## 79 - Create User Context
+- Needed to get an object that contains the signed in user
+- Subscribed to firebase `onAuthChange`
+- Context file in `context` folder called `user-context.js`
+
+
+
 ## Modules
 - bulma
 - node-saas
+
+
 
 ### Lessons
 29: Test Add Product Feature

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartIcon from '../cart-icon/CartIcon';
+import { auth } from '../../firebase';
+import { UserContext } from '../../context/user-context';
 import './Header.styles.scss';
 
 const Header = () => {
+    // Pull user from context
+    const { user } = useContext(UserContext);
+    console.log('User: ', user);
     return (
         <nav className='nav-menu container'>
             <div className='logo'>

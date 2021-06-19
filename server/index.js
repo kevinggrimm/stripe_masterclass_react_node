@@ -9,6 +9,8 @@ const paymentIntent = require('./api/paymentIntent');
 const app = express();
 const port = 8080;
 
+// Attaching the raw buffer to the request object
+// 
 app.use(express.json({
     verify: (req, res, buffer) => req['rawBody'] = buffer,
 }))

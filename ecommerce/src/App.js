@@ -8,6 +8,8 @@ import CartPage from './components/pages/cart-page/CartPage';
 import Checkout from './components/checkout/Checkout';
 import Success from './components/checkout/stripe-checkout/Success';
 import Cancel from './components/checkout/stripe-checkout/Cancel';
+import Signup from './components/signup/Signup';
+import SignIn from './components/signin/SignIn';
 import './App.scss';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         {/* Routes for the Success, Cancel pages for Stripe */}
         <Route path='/success' component={Success} />
         <Route path='/canceled' component={Cancel} />
+        <Route path='/sign-up' component={Signup} />
+        <Route path='/sign-in' component={SignIn} />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>

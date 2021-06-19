@@ -1,0 +1,20 @@
+{
+  "cartItems": [
+    {
+      "price": 35,
+      "quantity": 1
+    },
+    {
+      "price": 28,
+      "quantity": 1
+    }
+  ],
+  "shipping": {
+    "name": "John Smith",
+    "address": {
+      "line1": "10 downing street, London"
+    }
+  },
+  "description": "payment intent for cart items",
+  "receipt_email": "jsmith@gmail.com"
+}
