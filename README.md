@@ -2,7 +2,11 @@
 1. **Postman:** https://web.postman.co/workspace/New-Personal-Workspace~053bc16e-962e-4529-a973-e9d80f385c69/request/create?requestId=b2d20c61-b8b1-407e-ae0d-d231b303c5f3
 2. **Stripe Docs**
 https://stripe.com/docs/stripe-js/react
-
+https://stripe.com/docs/js/payment_intents/confirm_card_payment
+https://stripe.com/docs/api/payment_intents/confirm
+https://stripe.com/docs/api/payment_methods/retrieve
+https://stripe.com/docs/payments/setup-intents
+https://stripe.com/docs/api/customers/create
 
 ## Test Checkout Session Endpoint
 - `localhost:8080/create-checkout-session`
@@ -118,6 +122,104 @@ https://stripe.com/docs/stripe-js/react
 - Needed to get an object that contains the signed in user
 - Subscribed to firebase `onAuthChange`
 - Context file in `context` folder called `user-context.js`
+
+## 83 - Update Fetch from API Function
+- Include token when making request from backend
+- `helpers.js` - update function
+
+## 84 - Create service account environment variable
+- Passing JWT token to backend
+- Want to check if user is logged in or not
+- Need to add Firebase SDK to server
+- Need to create **service account key** - dashboard for project
+- This is a service account - JSON file that is placed in root of server; add to *gitignore*
+- Creating an env var to point to the service account
+- Download `service-account.json` and move to root of `server` file
+- Firebase SDK looks for the environment variable
+
+## 85 - Firebase Initialization
+- Export DB, auth objects
+- `npm i firebase-admin`
+- Create new file, `touch firebase.js`
+- Initialize firebase SDK
+- Using in API calls
+
+## 86 - Auth Helper Functions
+- Decode JWT function - decode frontend token
+- Validate user - validate we have a signed in user
+- In server, create `auth` folder
+
+# Section 7 - Checkout Using Saved Credit Card
+## - 87 - Get Customer From Stripe Function
+- Updating checkout experience
+- Save customer cards to stripe account
+- Enable customer to use saved card for payment
+1. Endpoint for card save process
+2. Create customer in stripe
+- Gets customer from stripe
+- If customer does not exist, create with stripe
+- Return customers ID
+**Both are backend**
+3. Update custom checkout component to save card during payment process
+- Can then use card for future payment
+
+## - 88 - Create Setup Intent Endpoint
+- Endpoint to save customer credit card details
+1. Need to create a SetupIntent
+- Similar to creating a session and pyament intent
+- Pass a customer Id
+- On frontend, can pass credit card details to stripe directly
+2. Create endpoints for API calls in `index.js`
+3. Function to update payment intent
+- When saving credit card during a pyament process, we need to update a payment intent with a customer id
+- Create a function `updatePaymentIntent`
+4. Need to update the `paymentIntent.js` API 
+- When we send back client secret, need to also send back the ID of the payment intent
+- On the frontend, when we want to update the payment intent, we have the ID saved
+- Can send a request to `updatePaymentIntent` and attach ID of payment intent
+
+**Docs:** 
+- https://stripe.com/docs/api/setup_intents
+- https://stripe.com/docs/payments/setup-intents
+
+
+## - 90 - Validate User Fix
+- 
+- 
+
+
+## - 91 - Show Saved Cards 1
+### Overview
+- Updating custom checkout component:
+1. When component mounts, check for saved cards
+- Want to load that and show above payment button
+2. Once we create markup, do setup for saving a card
+3. Then checking out / making payment with saved card
+
+### UI Logic to display saved cards
+- *Select* element to show saved cards
+
+## - 92 - Show Saved Cards 2
+- Give option to save the card for future purchases
+- Updating the `CustomCheckout.js` component
+- Adding a check button below **CardCvcElement**
+
+
+
+## - 93 - Save Card During Payment
+- 
+- 
+
+
+## - 94 - Test Saved Card
+- 
+- 
+
+
+## - 95 - Pay With Saved Card & Wrap Up
+- 
+- 
+
 
 
 

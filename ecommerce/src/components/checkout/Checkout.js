@@ -3,7 +3,7 @@ import React, { useContext, useState  } from 'react';
 import { CartContext } from '../../context/CartContext';
 import Layout from '../shared/Layout';
 import StripeCheckout from './stripe-checkout/StripeCheckout';
-// import CustomCheckout from '../custom-checkout/CustomCheckout';
+import CustomCheckout from '../custom-checkout/CustomCheckout';
 import ShippingAddress from '../custom-checkout/ShippingAddress';
 import './Checkout.styles.scss';
 
@@ -27,7 +27,7 @@ const Checkout = () => {
                 <h2>Checkout Summary</h2>
                 <h3>{`Total Items: ${itemCount}`}</h3>
                 <h4>{`Amount to Pay: $${total}`}</h4>
-                <StripeCheckout />
+                {/* <StripeCheckout /> */}
                 {/* 
                     Wrapper for shipping component 
                     Only show if not entered already
@@ -47,10 +47,10 @@ const Checkout = () => {
                 </div>
                 <div style={cardShown}>
                     {/* Only show if we have a shipping address */}
-                    {/* <CustomCheckout 
+                    <CustomCheckout 
                         shipping={shipping}
                         cartItems={cartItems}
-                    /> */}
+                    />
                 </div>
             </div>
         </Layout>

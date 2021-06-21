@@ -12,6 +12,7 @@ export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
     const [ user, setUser ] = useState(null);
+    // Load while the user object is retrieved from DB
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
@@ -54,6 +55,9 @@ const UserContextProvider = ({ children }) => {
 
     // Define the user context
     const userContext = { user, loading};
+    
+    // Load until data is retrieved
+    if (loading) { return <div>Loading...</div> }
 
     return (
         <UserContext.Provider value={ userContext } >

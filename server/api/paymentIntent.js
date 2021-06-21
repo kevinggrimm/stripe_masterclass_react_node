@@ -29,11 +29,20 @@ async function paymentIntent(req, res) {
            shipping,
        });
 
-       // Want to send a client secret to the frontend
-       // Stripe API returns a payment intend object
-       // Client secret is needed to complete the payment process
-       // Similar concept to the session Id for the hosted checkout
-       res.status(200).json({ clientSecret: paymentIntent.client_secret });
+       /* 
+        - Want to send a client secret to the frontend
+        - Stripe API returns a payment intend object
+        - Client secret is needed to complete the payment process
+        - Similar concept to the session Id for the hosted checkout
+
+        Lesson 89: 
+        - Also returning paymentIntent ID to the frontend
+        - Will use this to call updatePaymentIntent when card information is changed
+        */
+       res.status(200).json({ 
+           clientSecret: paymentIntent.client_secret,
+           id: paymentIntent.id
+        });
    } catch (error) {
        console.log(error);
        res.status(400).json({ error: 'an error occurred, unable to create payment intent' });
